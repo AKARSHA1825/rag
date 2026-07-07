@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-core
+langchain-huggingface
+chromadb
+pypdf
+sentence-transformers
+azure-ai-inference
+python-dotenv
+anthropic
+azure-identity
+rank_bm25

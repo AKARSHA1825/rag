@@ -1,0 +1,15 @@
+# Virtual environment
+.venv/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Chroma database
+chroma_db/
+
+# Optional large/generated files
+bm25_chunks.pkl
