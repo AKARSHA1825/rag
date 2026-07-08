@@ -1,6 +1,11 @@
 """Interactive CLI for the RAG application."""
-#Inthiyaz
-from rag import ask
+from rag import ask, client
+
+# ==================================================================
+# NEW: Excel rating-export feature (added by Shaik)
+# ------------------------------------------------------------------
+from export_rating_to_excel import export_product
+from intent_classifier import classify_intent
 
 
 def main() -> None:
@@ -18,6 +23,21 @@ def main() -> None:
             if query.lower() in ["exit", "quit"]:
                 print("Goodbye!")
                 break
+
+            # ======================================================
+            # Handles any phrasing ("pull rating for...", "I need the
+            # excel for...", "build rating sheet private motor pls", etc.)
+            # ======================================================
+            intent = classify_intent(client, query)
+            if intent["is_export_request"]:
+                if not intent["product_name"]:
+                    print("\nWhich product should I generate the rating specification for?\n")
+                    continue
+                product_name = intent["product_name"]
+                print(f"\nGenerating rating specification Excel for: {product_name} ...")
+                output_path = export_product(product_name, debug=False)
+                print(f"Done. Saved to: {output_path}\n")
+                continue
 
             answer = ask(query, debug=False)
             print("\n" + answer + "\n")

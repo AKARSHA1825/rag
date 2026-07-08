@@ -13,3 +13,5 @@ chroma_db/
 
 # Optional large/generated files
 bm25_chunks.pkl
+
+output/

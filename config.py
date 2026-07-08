@@ -39,7 +39,7 @@ class RetrieverConfig:
 class IngestConfig:
     """Document ingestion configuration."""
 
-    pdf_path: str = "data/Manomay Rates.pdf"
+    pdf_path: str = "data/Trinidad_underwriting_guide.pdf"
     chunk_size: int = 12000
     chunk_overlap: int = 3000
 
